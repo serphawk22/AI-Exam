@@ -21,6 +21,9 @@ cmds = [
 
 [phases.build]
 cmds = [
+  "pip install -r requirements.txt",
+  "mkdir -p proctoring/ml_models",
+  "wget -q -O proctoring/ml_models/yolo11s.pt https://github.com/ultralytics/assets/releases/download/v8.3.0/yolo11s.pt || echo 'YOLO download skipped'",
   "DJANGO_SETTINGS_MODULE=futurproctor.settings_production python manage.py collectstatic --noinput",
   "DJANGO_SETTINGS_MODULE=futurproctor.settings_production python manage.py migrate --noinput"
 ]
