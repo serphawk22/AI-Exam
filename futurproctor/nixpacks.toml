@@ -1,0 +1,29 @@
+[phases.setup]
+# System-level libraries needed by OpenCV, dlib, WeasyPrint, ffmpeg
+nixPkgs = [
+  "libGL",
+  "libglib",
+  "libsm",
+  "libxrender",
+  "libxext",
+  "ffmpeg",
+  "pango",
+  "cairo",
+  "gdk-pixbuf",
+  "cmake"
+]
+
+[phases.install]
+cmds = [
+  "pip install --upgrade pip",
+  "pip install -r requirements.txt"
+]
+
+[phases.build]
+cmds = [
+  "DJANGO_SETTINGS_MODULE=futurproctor.settings_production python manage.py collectstatic --noinput",
+  "DJANGO_SETTINGS_MODULE=futurproctor.settings_production python manage.py migrate --noinput"
+]
+
+[start]
+cmd = "DJANGO_SETTINGS_MODULE=futurproctor.settings_production gunicorn futurproctor.wsgi --bind 0.0.0.0:$PORT --workers 2 --timeout 120"

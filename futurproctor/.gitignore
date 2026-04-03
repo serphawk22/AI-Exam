@@ -1,9 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+
+# Virtual Environment
 venv/
 env/
-__pycache__/
-*.pyc
+.venv/
+ENV/
+
+# Django
 db.sqlite3
-.env
+*.sqlite3
 media/
-.idea/
+staticfiles/
+local_settings.py
+
+# Environment Variables
+.env
+*.env
+
+# ML Model Weights (too large for git - 19MB+)
+*.pt
+*.pth
+*.onnx
+*.weights
+
+# IDE
 .vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs (specific filenames only - don't use *.txt or requirements.txt gets blocked)
+*.log
+cmd_out.txt
+error_out.txt
+migration_out.txt
+migration_out2.txt
+tb.txt
+generation_error.log
+cmd_out.txt
+error_out.txt
+migration_out*.txt
+tb.txt
+generation_error.log
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
